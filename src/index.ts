@@ -8,6 +8,7 @@ import messageRoutes from './routes/messageRoutes';
 import userRoutes from './routes/userRoutes';
 
 import './db';
+
 import { app, server } from './socket';
 
 const PORT = process.env.PORT || 5000;
@@ -15,7 +16,9 @@ const CORS_ORIGIN = process.env.CORS_ORIGIN;
 
 app.use(express.json());
 app.use(cookieParser());
-app.use(cors({ origin: CORS_ORIGIN, methods: ['GET', 'POST'] }));
+app.use(
+  cors({ origin: CORS_ORIGIN, methods: ['GET', 'POST'], credentials: true }),
+);
 
 app.use('/api/auth', authRoutes);
 app.use('/api/messages', messageRoutes);
