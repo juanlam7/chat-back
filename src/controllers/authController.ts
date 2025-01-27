@@ -102,3 +102,11 @@ export const logout = (req: Request, res: Response): void => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 };
+
+export const initApp = async (req: Request, res: Response): Promise<void> => {
+  try {
+    res.status(200).json({ message: 'Server connection successfully' });
+  } catch (error: any) {
+    res.status(500).json({ error: 'Cannot connect to server' });
+  }
+};

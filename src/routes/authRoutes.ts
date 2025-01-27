@@ -1,7 +1,5 @@
 import express from 'express';
-import { signup } from '../controllers/authController';
-import { login } from '../controllers/authController';
-import { logout } from '../controllers/authController';
+import { initApp, login, logout, signup } from '../controllers/authController';
 
 const router = express.Router();
 
@@ -15,6 +13,10 @@ router.post('/login', (req, res) => {
 
 router.post('/logout', (req, res) => {
   logout(req, res);
+});
+
+router.get('/initiation', (req, res) => {
+  initApp(req, res);
 });
 
 export default router;
